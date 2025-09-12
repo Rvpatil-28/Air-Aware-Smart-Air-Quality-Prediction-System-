@@ -24,9 +24,6 @@ for col in ['PM2.5', 'PM10', 'NO2', 'SO2', 'O3']:
 # (3) Resample to daily averages
 df_daily = df.resample('D').mean()
 
-# ==================
-# 3. FEATURE ENGINEERING
-# ==================
 df_daily['day'] = df_daily.index.day
 df_daily['month'] = df_daily.index.month
 df_daily['year'] = df_daily.index.year
@@ -46,9 +43,6 @@ df_daily['season'] = df_daily['month'].apply(season)
 
 print("\n✅ Preprocessing complete! Processed dataset preview:\n", df_daily.head())
 
-# =====================
-# 4. EXPLORATORY DATA ANALYSIS
-# =====================
 
 # 1. Pollutant trend over time
 plt.figure(figsize=(12, 6))
@@ -72,3 +66,4 @@ if 'season' in df_daily.columns:
     plt.title("Seasonal Average Pollutant Levels")
     plt.ylabel("Concentration")
     plt.show()
+
