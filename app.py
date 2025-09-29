@@ -1,6 +1,7 @@
 from sklearn.metrics import mean_squared_error
 import streamlit as st
 import pandas as pd
+from src.alerts import send_email_alert
 import numpy as np
 import joblib
 import os
@@ -70,14 +71,28 @@ if 'pm25' in df.columns:
     fc2 = m2.predict(future2).set_index('ds')
     fc2['aqi'] = fc2['yhat'].apply(pm25_to_aqi)
 
-    risky = fc2[fc2['aqi'] > 100]
+    risky = fc2[fc2['aqi']>100]
     st.write(f"Predicted days with AQI > 100 in next {horizon_days} days: {len(risky)}")
 
     if not risky.empty:
-        st.dataframe(risky[['yhat', 'aqi']].head(20))
+        st.dataframe(risky[['yhat','aqi']].head(20))
+
+        try:
+            send_email_alert(
+                smtp_server="smtp.gmail.com",
+                smtp_port=587,
+                username="yyy@gmail.com",
+                password="aaaa bbbb cccc dddd",  
+                sender="yyy@gmail.com",
+                recipient="xxxxx@gmail.com",
+                subject="🚨 AirAware AQI Alert",
+                body=f"High AQI forecast detected!\n\n{len(risky)} unsafe days predicted.\nFirst high AQI on: {risky.index[0].date()}"
+            )
+            st.success("📩 Email alert sent successfully!")
+        except Exception as e:
+            st.error(f"Email sending failed: {e}")
     else:
         st.write('No high-AQI days predicted in the horizon.')
-
 st.markdown('---')
 
 # --- OpenAQ Fetch ---
