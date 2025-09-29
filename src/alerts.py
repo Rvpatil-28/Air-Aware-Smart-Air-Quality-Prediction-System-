@@ -1,4 +1,3 @@
-
 import smtplib
 from email.message import EmailMessage
 
@@ -13,3 +12,4 @@ def send_email_alert(smtp_server, smtp_port, username, password, sender, recipie
         server.starttls()
         server.login(username, password)
         server.send_message(msg)
+
