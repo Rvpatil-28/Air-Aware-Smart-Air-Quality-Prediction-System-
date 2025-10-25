@@ -111,8 +111,7 @@ This project is released under the MIT License — free to use, modify, and dist
 
 Ritesh Patil
 💬 Data Science Enthusiast | AI & ML Learner
-📧 [your.email@example.com
-]
+📧riteshvpatil28@gmail.com
 🌐 [GitHub Profile](https://github.com/Rvpatil-28)
 
 “Clean air is everyone’s right. Let’s predict and protect!” 🌱
