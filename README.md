@@ -113,6 +113,6 @@ Ritesh Patil
 💬 Data Science Enthusiast | AI & ML Learner
 📧 [your.email@example.com
 ]
-🌐 GitHub Profile
+🌐 [GitHub Profile](https://github.com/Rvpatil-28)
 
 “Clean air is everyone’s right. Let’s predict and protect!” 🌱
